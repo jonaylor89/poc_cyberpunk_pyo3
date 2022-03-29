@@ -21,7 +21,7 @@ pub fn export(segment: AudioSegment, key: &str, file_format: &str) -> Result<(),
 pub fn from_file(key: &str) -> Result<AudioSegment, String> {
     let output: PyResult<PyObject> = Python::with_gil(|py| {
         let locals = [("os", py.import("os")?), ("pydub", py.import("pydub")?)].into_py_dict(py);
-        let code = format!("pydub.AudioSegment.from_from({key})");
+        let code = format!("pydub.AudioSegment.from_file('{key}')");
         let segment: PyObject = py.eval(&code, None, Some(locals))?.extract()?;
 
         println!("let's see - {}", segment);
@@ -31,7 +31,7 @@ pub fn from_file(key: &str) -> Result<AudioSegment, String> {
 
     match output {
         Ok(audio) => Ok(AudioSegment{segment: audio}),
-        _ => Err("some error idk".to_string()),
+        Err(e) => Err(format!("some error idk {e}")),
     }
 }
 
