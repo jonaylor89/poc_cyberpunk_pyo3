@@ -1,0 +1,27 @@
+[build-system]
+requires = ["maturin>=0.12,<0.13"]
+build-backend = "maturin"
+
+[project]
+name = "poc_cyberpunk_pyo3"
+requires-python = ">=3.6"
+dependencies = ["pydub"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+
+
+[tool.maturin]
+bindings = "bin"
+
+[tool.poetry]
+name = "poc_cyberpunk_pyo3"
+version = "0.1.0"
+description = "Proof of Concept to see if Cyberpunk can be written in Rust with PyO3 for connecting to pydub"
+authors = ["Johannes Naylor <jonaylor89@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydub = "^0.25.1"

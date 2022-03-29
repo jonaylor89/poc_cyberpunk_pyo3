@@ -1,0 +1,15 @@
+[default]
+address = "127.0.0.1"
+port = 8080
+workers = 16
+keep_alive = 5
+ident = "Rocket"
+log_level = "debug"
+temp_dir = "/tmp"
+cli_colors = true
+
+[default.shutdown]
+ctrlc = true
+signals = ["term", "hup"]
+grace = 5
+mercy = 5
